@@ -41,7 +41,7 @@ function sayHello() {
  */
 
 function drawRectangle() {
-  var ctx = document.getElementById("canvas2");
+  var ctx = document.getElementById("canvas2").getContext("2d");
 
 let h = 0;
 let w = 0;
@@ -71,7 +71,7 @@ while (y < 5) {
   alert("Y - Coordinate is too Small.");
   y = prompt("Enter Y - Coordinate: ")
 }
-
+ ctx.strokeRect(x, y, w, h);
 }
 
 /*
@@ -100,6 +100,34 @@ while (y < 5) {
  */
 
 function drawColoredRectangle() {
+  var ctx = document.getElementById("canvas3").getContext("2d");
+  let c = "";
+
+  c = prompt("Color: ");
+  if (c == "black") {
+    ctx.fillStyle = 'black';
+
+ } else if (c == "blue") {
+   ctx.fillStyle = 'blue';
+   ctx.fillRect(10, 10, 100, 50);
+ } else if (c == "green") {
+   ctx.fillStyle = 'green';
+   ctx.fillRect(10, 10, 100, 50);
+ } else if (c == "purple") {
+   ctx.fillStyle = 'purple';
+   ctx.fillRect(10, 10, 100, 50);
+ } else if (c == "red") {
+   ctx.fillStyle = 'red';
+   ctx.fillRect(10, 10, 100, 50);
+ } else if (c == "yellow") {
+   ctx.fillStyle = 'yellow';
+   ctx.fillRect(10, 10, 100, 50);
+ } else if ( c == "orange") {
+   ctx.fillStyle = 'orange';
+   ctx.fillRect(10, 10, 100, 50);
+ } else {
+   alert("Color is not supported.")
+ }
 
 }
 
