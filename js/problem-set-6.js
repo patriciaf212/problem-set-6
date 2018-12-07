@@ -161,7 +161,21 @@ function drawColoredRectangle() {
  */
 
 function drawTriangle() {
+  var ctx = document.getElementById("canvas4").getContext("2d");
 
+  let t1 = 0;
+  let t2 = 0;
+  let t3 = 0;
+
+  t1 = prompt("Side 1: ");
+
+  t2 = prompt("Side 2: ");
+  t3 = prompt("Side 3: ");
+
+
+  ctx.moveTo(75, 50);
+  ctx.lineTo(100, 75);
+  ctx.lineTo(100, 25);
 }
 
 /*
