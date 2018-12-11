@@ -71,6 +71,7 @@ while (y < 5) {
   alert("Y - Coordinate is too Small.");
   y = prompt("Enter Y - Coordinate: ")
 }
+
  ctx.strokeRect(x, y, w, h);
 }
 
@@ -106,7 +107,7 @@ function drawColoredRectangle() {
   c = prompt("Color: ");
   if (c == "black") {
     ctx.fillStyle = 'black';
-
+    ctx.fillRect(10, 10, 100, 50);
  } else if (c == "blue") {
    ctx.fillStyle = 'blue';
    ctx.fillRect(10, 10, 100, 50);
@@ -168,12 +169,14 @@ function drawTriangle() {
   let t3 = 0;
 
   t1 = prompt("Side 1: ");
-
   t2 = prompt("Side 2: ");
+  while (t2 < t1) {
+  }
   t3 = prompt("Side 3: ");
+  while (t3 > t1 && t2)
 
 
-  ctx.moveTo(75, 50);
+  ctx.moveTo(t1, t2);
   ctx.lineTo(100, 75);
   ctx.lineTo(100, 25);
 }
@@ -198,7 +201,14 @@ function drawTriangle() {
  */
 
 function drawSmileyFace() {
+  var ctx = document.getElementById("canvas5").getContext("2d");
+  let radius = "";
+  let radius = prompt("Radius: ")
+  while (radius)
 
+  if (smile === null){
+    alert("Input in not a number");
+  }
 }
 
 /*
@@ -220,6 +230,7 @@ function drawSmileyFace() {
  */
 
 function drawStar() {
+  var ctx = document.getElementById("canvas6").getContext("2d");
 
 }
 
@@ -294,5 +305,8 @@ function drawPyramid() {
  */
 
 function drawHouse() {
+  var ctx = document.getElementById("canvas9").getContext("2d");
+    let hColor = prompt("House Color: ");
+    
 
 }
