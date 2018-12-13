@@ -164,6 +164,13 @@ function drawColoredRectangle() {
 function drawTriangle() {
   var ctx = document.getElementById("canvas4").getContext("2d");
 
+  ctx.beginPath();
+  ctx.moveTo(125, 125);
+  ctx.lineTo(125, 45);
+  ctx.lineTo(45, 125);
+  ctx.closePath();
+  ctx.stroke();
+
   let t1 = 0;
   let t2 = 0;
   let t3 = 0;
@@ -174,11 +181,7 @@ function drawTriangle() {
   }
   t3 = prompt("Side 3: ");
   while (t3 > t1 && t2)
-
-
-  ctx.moveTo(t1, t2);
-  ctx.lineTo(100, 75);
-  ctx.lineTo(100, 25);
+  // 7, 24, 25
 }
 
 /*
@@ -307,6 +310,6 @@ function drawPyramid() {
 function drawHouse() {
   var ctx = document.getElementById("canvas9").getContext("2d");
     let hColor = prompt("House Color: ");
-    
+
 
 }
