@@ -164,6 +164,7 @@ function drawColoredRectangle() {
 function drawTriangle() {
   var ctx = document.getElementById("canvas4").getContext("2d");
 
+
   ctx.beginPath();
   ctx.moveTo(125, 125);
   ctx.lineTo(125, 45);
@@ -171,17 +172,7 @@ function drawTriangle() {
   ctx.closePath();
   ctx.stroke();
 
-  let t1 = 0;
-  let t2 = 0;
-  let t3 = 0;
 
-  t1 = prompt("Side 1: ");
-  t2 = prompt("Side 2: ");
-  while (t2 < t1) {
-  }
-  t3 = prompt("Side 3: ");
-  while (t3 > t1 && t2)
-  // 7, 24, 25
 }
 
 /*
@@ -205,13 +196,28 @@ function drawTriangle() {
 
 function drawSmileyFace() {
   var ctx = document.getElementById("canvas5").getContext("2d");
-  let radius = "";
-  let radius = prompt("Radius: ")
-  while (radius)
+  ctx.clearRect(0, 0, canvas5.width, canvas5.height);
+  let radius = 0;
 
-  if (smile === null){
-    alert("Input in not a number");
-  }
+  do {
+    radius = Number(prompt("Enter Radius: "));
+  } while (radius < 1 || isNaN(radius) == true);
+
+  ctx.beginPath();
+  ctx.arc(radius + 10, radius + 10, radius, 0, 2 * Math.PI);
+  ctx.stroke();
+
+  ctx.beginPath();
+  ctx.arc(radius + 10, radius + 10, radius * 0.7, 1 * Math.PI);
+  ctx.stroke();
+
+  ctx.beginPath();
+  ctx.arc(radius - 5, radius, radius * 0.1, 0, 2 * Math.PI);
+  ctx.stroke();
+
+  ctx.beginPath();
+  ctx.arc(radius + 25, radius, radius * 0.1, 0, 2 * Math.PI);
+  ctx.stroke();
 }
 
 /*
