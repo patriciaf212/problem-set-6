@@ -164,11 +164,27 @@ function drawColoredRectangle() {
 function drawTriangle() {
   var ctx = document.getElementById("canvas4").getContext("2d");
 
+  let side1 = 0;
+  let side2 = 0;
+  let side3 = 0;
+
+
+  do {
+    side1 = prompt("Enter Side 1:");
+  } while (side1 < side2 && side3)
+
+  do {
+    side2 = prompt("Enter Side 2:")
+  } while (side2 < side3)
+
+  do {
+    side3 = prompt("Enter Side 3:");
+  } while (side2 > side1 && side3)
 
   ctx.beginPath();
-  ctx.moveTo(125, 125);
-  ctx.lineTo(125, 45);
-  ctx.lineTo(45, 125);
+  ctx.moveTo(10, 10);
+  ctx.lineTo(side2, side3);
+  ctx.lineTo(side2, side1);
   ctx.closePath();
   ctx.stroke();
 
@@ -196,28 +212,25 @@ function drawTriangle() {
 
 function drawSmileyFace() {
   var ctx = document.getElementById("canvas5").getContext("2d");
-  ctx.clearRect(0, 0, canvas5.width, canvas5.height);
-  let radius = 0;
 
-  do {
-    radius = Number(prompt("Enter Radius: "));
-  } while (radius < 1 || isNaN(radius) == true);
+let radius = 0;
 
-  ctx.beginPath();
-  ctx.arc(radius + 10, radius + 10, radius, 0, 2 * Math.PI);
-  ctx.stroke();
+ do{
+   radius = Number(prompt("Enter the radius:"));
+ } while (radius < 1 || isNaN(radius) == true)
 
-  ctx.beginPath();
-  ctx.arc(radius + 10, radius + 10, radius * 0.7, 1 * Math.PI);
-  ctx.stroke();
-
-  ctx.beginPath();
-  ctx.arc(radius - 5, radius, radius * 0.1, 0, 2 * Math.PI);
-  ctx.stroke();
-
-  ctx.beginPath();
-  ctx.arc(radius + 25, radius, radius * 0.1, 0, 2 * Math.PI);
-  ctx.stroke();
+ ctx.beginPath();
+ ctx.arc(radius + 10, radius + 10, radius, 0, Math.PI * 2);
+ ctx.stroke();
+ ctx.beginPath();
+ ctx.arc(radius + 10, radius + 10, radius * 0.7, 0, Math.PI * 1);
+ ctx.stroke();
+ ctx.beginPath();
+ ctx.arc(radius - 10, radius - 10, radius * 0.10, 0, Math.PI * 2);
+ ctx.stroke();
+ ctx.beginPath();
+ ctx.arc(radius + 35, radius - 10, radius * 0.10, 0, Math.PI * 2);
+ ctx.stroke();
 }
 
 /*
@@ -239,9 +252,25 @@ function drawSmileyFace() {
  */
 
 function drawStar() {
-  var ctx = document.getElementById("canvas6").getContext("2d");
+  var context = document.getElementById("canvas6").getContext("2d");
+  let star = 0;
+  star = prompt("Enter Outer Radius:");
+  star = prompt("Enter Inner Radius:")
 
-}
+  context.beginPath();
+   context.moveTo(112, 40);
+   context.lineTo(161.45, 74.55);
+   context.lineTo(141.67, 99.27);
+   context.lineTo(142.56, 130.45);
+   context.lineTo(112, 120);
+   context.lineTo(81.44, 130.45);
+   context.lineTo(82.33, 99.27);
+   context.lineTo(62.55, 74.55);
+   context.lineTo(93.66, 65.73);
+   context.closePath();
+  }
+
+
 
 /*
  * Stop Sign. 7 points.
@@ -259,7 +288,24 @@ function drawStar() {
  */
 
 function drawStopSign() {
+  var ctx = document.getElementById("canvas7").getContext("2d");
+  let numberOfSides = 9,
+    size = 80,
+    Xcenter = 100,
+    Ycenter = 100;
 
+ctx.beginPath();
+ctx.moveTo (Xcenter +  size * Math.cos(0), Ycenter +  size *  Math.sin(0));
+
+for (var i = 1; i <= numberOfSides;i += 1) {
+    ctx.lineTo (Xcenter + size * Math.cos(i * 2 * Math.PI / numberOfSides), Ycenter + size * Math.sin(i * 2 * Math.PI / numberOfSides));
+}
+ctx.fillStyle = "red"
+ctx.strokeStyle = "black";
+ctx.fillText('STOP', 10, 50);
+ctx.font = "80px serif";
+ctx.lineWidth = 1;
+ctx.stroke();
 }
 
 /*
@@ -281,6 +327,7 @@ function drawStopSign() {
  */
 
 function drawPyramid() {
+  var ctx = document.getElementById("canvas8").getContext("2d");
 
 }
 
@@ -315,7 +362,37 @@ function drawPyramid() {
 
 function drawHouse() {
   var ctx = document.getElementById("canvas9").getContext("2d");
-    let hColor = prompt("House Color: ");
 
+    let hColor;
+    let dColor;
 
+    ctx.clearRect(0, 0, ctx.width, ctx.height);
+    while (true){
+      hColor = prompt("House Color: ");
+      dColor = prompt("Door Color: ");
+      if ((hColor == "black" || hColor == "blue" || hColor == "green" || hColor == "purple" || hColor == "red" || hColor == "yellow" || hColor == "orange")
+      && (dColor == "black" || dColor == "blue" || dColor == "green" || dColor == "purple" || dColor == "red" || dColor == "yellow" || dColor == "orange")){
+      } else {
+        alert("The Color is Not Supported")
+      }
+  }
+
+    ctx.rect(150, ctx.height - 10, 450, 600);
+    ctx.fillStyle = hColor;
+    ctx.beginPath();
+    ctx.fillStyle = hColor;
+    ctx.fillRect(150, ctx.height - 10, 450, 600);
+    ctx.fillStyle = dColor;
+    ctx.fillRect(150 + (600/2)-30, (ctx.height - 20) + 350, 60, 100);
+    ctx.fillStyle = "gray";
+    ctx.moveTo(150, ctx.height - 10);
+    ctx.lineTo(150 + 286, 150);
+    ctx.lineTo(150 + 600, ctx.height - 10);
+    ctx.fill();
+    ctx.fillStyle = "light blue";
+    ctx.fillRect(300, (ctx.height - 10) + 100, 50, 50);
+    ctx.fillRect(526, (ctx.height - 10) + 100, 50, 50);
+    ctx.fillRect(300, (ctx.height - 10) + 100, 50, 50);
+    ctx.fillRect(526, (ctx.height - 10) + 100, 50, 50);
+    ctx.closePath();
 }
