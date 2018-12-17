@@ -163,32 +163,25 @@ function drawColoredRectangle() {
 
 function drawTriangle() {
   var ctx = document.getElementById("canvas4").getContext("2d");
+  //ctx.clearRect(10, 10, canvas4.width, cavas.height);
 
-  let side1 = 0;
-  let side2 = 0;
-  let side3 = 0;
+  //let sides = [];
 
+  //for (i = 0; i < 3, i++);
+    //do {
+    //  input = Number(prompt("Enter a side Length:"));
+  //  } while (input < 1 || inNaN(input) == true)
+    //  sides.push(input);
+  //  }
 
-  do {
-    side1 = prompt("Enter Side 1:");
-  } while (side1 < side2 && side3)
-
-  do {
-    side2 = prompt("Enter Side 2:")
-  } while (side2 < side3)
-
-  do {
-    side3 = prompt("Enter Side 3:");
-  } while (side2 > side1 && side3)
-
-  ctx.beginPath();
-  ctx.moveTo(10, 10);
-  ctx.lineTo(side2, side3);
-  ctx.lineTo(side2, side1);
-  ctx.closePath();
-  ctx.stroke();
-
-
+  //  if (Math.pow(sides[0], 2) + Math.pow(sides[1], 2) == Math.pow(sides[2])){
+    //  sides = sides.sort();
+    //  ctx.moveTo(10, 10);
+    //  ctx.lineTo(10, sides[0]);
+    //  ctx.lineTo(sides[1], sides[0]);
+    //  ctx.lineTo(10, 10);
+    //  ctx.stroke();
+//    }
 }
 
 /*
@@ -217,7 +210,7 @@ let radius = 0;
 
  do{
    radius = Number(prompt("Enter the radius:"));
- } while (radius < 1 || isNaN(radius) == true)
+ } while (radius < 10 || isNaN(radius) == true)
 
  ctx.beginPath();
  ctx.arc(radius + 10, radius + 10, radius, 0, Math.PI * 2);
@@ -252,22 +245,32 @@ let radius = 0;
  */
 
 function drawStar() {
-  var context = document.getElementById("canvas6").getContext("2d");
-  let star = 0;
-  star = prompt("Enter Outer Radius:");
-  star = prompt("Enter Inner Radius:")
+  var ctx = document.getElementById("canvas6").getContext("2d");
 
-  context.beginPath();
-   context.moveTo(112, 40);
-   context.lineTo(161.45, 74.55);
-   context.lineTo(141.67, 99.27);
-   context.lineTo(142.56, 130.45);
-   context.lineTo(112, 120);
-   context.lineTo(81.44, 130.45);
-   context.lineTo(82.33, 99.27);
-   context.lineTo(62.55, 74.55);
-   context.lineTo(93.66, 65.73);
-   context.closePath();
+  let innerRadius = 0;
+  let outerRadius = 0;
+
+  do {
+    outerRadius = prompt("Enter the Outer Radius: ");
+  } while (outerRadius < 1 || isNaN(outerRadius) == true)
+
+  do {
+    innerRadius = prompt("Enter Inner Radius: ");
+  } while (innerRadius < outerRadius || isNaN(innerRadius) == true);
+
+   ctx.beginPath();
+   ctx.arc(outerRadius, outerRadius, outerRadius, 0, Math.PI * 2);
+
+   ctx.moveTo(125, 125);
+   ctx.lineTo(161.45, 74.55);
+   ctx.lineTo(141.67, 99.27);
+   ctx.lineTo(142.56, 130.45);
+   ctx.lineTo(112, 120);
+   ctx.lineTo(81.44, 130.45);
+   ctx.lineTo(82.33, 99.27);
+   ctx.lineTo(62.55, 74.55);
+   ctx.lineTo(93.66, 65.73);
+   ctx.closePath();
   }
 
 
@@ -289,7 +292,7 @@ function drawStar() {
 
 function drawStopSign() {
   var ctx = document.getElementById("canvas7").getContext("2d");
-  let numberOfSides = 9,
+  let numberOfSides = 8,
     size = 80,
     Xcenter = 100,
     Ycenter = 100;
@@ -300,7 +303,7 @@ ctx.moveTo (Xcenter +  size * Math.cos(0), Ycenter +  size *  Math.sin(0));
 for (var i = 1; i <= numberOfSides;i += 1) {
     ctx.lineTo (Xcenter + size * Math.cos(i * 2 * Math.PI / numberOfSides), Ycenter + size * Math.sin(i * 2 * Math.PI / numberOfSides));
 }
-ctx.fillStyle = "red"
+ctx.fillStyle = "white"
 ctx.strokeStyle = "black";
 ctx.fillText('STOP', 10, 50);
 ctx.font = "80px serif";
@@ -365,6 +368,9 @@ function drawHouse() {
 
     let hColor;
     let dColor;
+    let x = 150;
+    let y = ctx.height - 10;
+
 
     ctx.clearRect(0, 0, ctx.width, ctx.height);
     while (true){
@@ -373,26 +379,25 @@ function drawHouse() {
       if ((hColor == "black" || hColor == "blue" || hColor == "green" || hColor == "purple" || hColor == "red" || hColor == "yellow" || hColor == "orange")
       && (dColor == "black" || dColor == "blue" || dColor == "green" || dColor == "purple" || dColor == "red" || dColor == "yellow" || dColor == "orange")){
       } else {
-        alert("The Color is Not Supported")
+        alert("The Color is Not Supported");
       }
-  }
-
-    ctx.rect(150, ctx.height - 10, 450, 600);
+    }
+    ctx.rect(x, y, 450, 600);
     ctx.fillStyle = hColor;
     ctx.beginPath();
     ctx.fillStyle = hColor;
-    ctx.fillRect(150, ctx.height - 10, 450, 600);
+    ctx.fillRect(x, y, 450, 600);
     ctx.fillStyle = dColor;
-    ctx.fillRect(150 + (600/2)-30, (ctx.height - 20) + 350, 60, 100);
+    ctx.fillRect(x + (600/2)-30, (y) + 350, 60, 100);
     ctx.fillStyle = "gray";
-    ctx.moveTo(150, ctx.height - 10);
-    ctx.lineTo(150 + 286, 150);
-    ctx.lineTo(150 + 600, ctx.height - 10);
+    ctx.moveTo(x, y);
+    ctx.lineTo(x + 286, 150);
+    ctx.lineTo(x + 600, y);
     ctx.fill();
     ctx.fillStyle = "light blue";
-    ctx.fillRect(300, (ctx.height - 10) + 100, 50, 50);
-    ctx.fillRect(526, (ctx.height - 10) + 100, 50, 50);
-    ctx.fillRect(300, (ctx.height - 10) + 100, 50, 50);
-    ctx.fillRect(526, (ctx.height - 10) + 100, 50, 50);
+    ctx.fillRect(300, y + 100, 50, 50);
+    ctx.fillRect(526, y + 100, 50, 50);
+    ctx.fillRect(300, y + 100, 50, 50);
+    ctx.fillRect(526, y + 100, 50, 50);
     ctx.closePath();
 }
