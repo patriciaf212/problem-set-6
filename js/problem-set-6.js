@@ -267,36 +267,37 @@ function drawStar() {
 
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    let innerRadius = Number(prompt("Enter the Inner Radius: "));
     let outerRadius = Number(prompt("Enter the Outer Radius: "));
+    let innerRadius = Number(prompt("Enter the Inner Radius: "));
 
     if (outerRadius >= innerRadius && canvas.width >= outerRadius + 125 && canvas.height >= outerRadius + 125 && innerRadius >= 1 && outerRadius >=1) {
       let point = 5;
-      let x1 = [];
-      let y1 = [];
-      let x2 = [];
-      let y2 = [];
+      let outerX = [];
+      let outerY = [];
+      let innerX = [];
+      let innerY = [];
 
       for (let i = 0; i < point; i++) {
-        x1.push(Math.cos((Math.PI*2*i) / point - (Math.PI / 2)) * outerRadius + 125);
-        y1.push(Math.sin((Math.PI*2*i) / point - (Math.PI / 2)) * outerRadius + 125);
-        x2.push(Math.cos((Math.PI*2*i) / point - (Math.PI / 2)) * innerRadius + 125);
-        y2.push(Math.sin((Math.PI*2*i) / point - (Math.PI / 2)) * innerRadius + 125);
+        outerX.push(Math.cos((Math.PI * 2 * i) / point - (Math.PI / 2)) * outerRadius + 125);
+        outerY.push(Math.sin((Math.PI * 2 * i) / point - (Math.PI / 2)) * outerRadius + 125);
+        innerX.push(Math.cos(((Math.PI * 2 * i) / point - (Math.PI / 2)) + (Math.PI / point)) * innerRadius + 125);
+        innerY.push(Math.sin(((Math.PI * 2 * i) / point - (Math.PI / 2)) + (Math.PI / point)) * innerRadius + 125);
       }
 
     ctx.beginPath();
-    ctx.moveTo(x1[0], y1[0]);
+    ctx.moveTo(outerX[0], outerY[0]);
 
-    for (let z = 0; z < x1.length; z++) {
-      ctx.lineTo(x2[z], y2[z]);
-      ctx.lineTo(x1[z + 1], y1[z + 1]);
+    for (let z = 0; z < outerX.length; z++) {
+      ctx.lineTo(innerX[z], innerY[z]);
+      ctx.lineTo(outerX[z + 1], outerY[z + 1]);
     }
-    ctx.lineTo(x1[0], y1[0]);
+    ctx.lineTo(outerX[0], outerY[0]);
     ctx.stroke();
     ctx.closePath();
-  } else {
-    alert("Your Inputs are not Valid")
   }
+   else {
+    alert("Your Inputs are not Valid")
+    }
   }
 
 
@@ -367,21 +368,21 @@ function drawPyramid() {
   let x = 10;
   let y = canvas.height - 10;
   let i = 0;
-  let line = 0;
+
+  lineNumber = 1;
 
   while (i < 5) {
-    for (let n = line; n <= 5; n += 1) {
-      ctx.rect(x, y - length, length, length);
+    for (let n = 0 + lineNumber; n <= 5; n++) {
+      ctx.strokeRect(x, y - length, length, length);
       ctx.stroke();
       x += length;
     }
-    x = 10 + (length / 2) * line;
-    y = y - length;
-    line += 1
-    i += 1;
+    x = 10 + (length / 2) * lineNumber;
+    y -= length;
+    lineNumber++;
+    i++;
   }
-  ctx.beginPath();
-  ctx.closePath();
+
 }
 
 /*
